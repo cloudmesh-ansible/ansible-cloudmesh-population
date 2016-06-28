@@ -1,0 +1,9 @@
+---
+# file: Groupproject_bdossp site.yml
+
+- hosts: projdata
+
+  remote_user: root
+
+  roles:
+    -  projectdata

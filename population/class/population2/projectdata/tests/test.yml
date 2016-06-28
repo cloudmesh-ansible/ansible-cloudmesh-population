@@ -1,0 +1,5 @@
+---
+- hosts: projdata
+  remote_user: root
+  roles:
+    - projectdata

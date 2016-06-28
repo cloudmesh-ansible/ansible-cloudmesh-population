@@ -1,0 +1,97 @@
+---
+# tasks file for projdata
+
+  - name: Check to see if pip is already installed.
+    command: "{{ pip }} --version"
+    ignore_errors: true
+    changed_when: false # read-only task
+    always_run: true # for check mode
+    register: pip_is_installed
+
+  - name: Download pip.
+    get_url: url=https://bootstrap.pypa.io/get-pip.py dest={{ pip_download_dest }}
+    when: pip_is_installed.rc != 0
+
+  - name: Install pip.
+    command: "{{ python }} {{ pip_download_dest }}/get-pip.py"
+    become: yes
+    when: pip_is_installed.rc != 0
+
+  - name: Delete get-pip.py.
+    file: state=absent path={{ pip_download_dest }}/get-pip.py
+    when: pip_is_installed.rc != 0
+
+  - name: Install python
+    apt: name=python{{ item.version }} state=latest
+    sudo: yes
+    with_items: python_dev_versions
+
+  - name: Install python-dev
+    apt: name=python{{ item.version }}-dev state=latest
+    sudo: yes
+    with_items: python_dev_versions
+ 
+  - name: Install extra python support libs
+    sudo: yes
+    apt: name=python-gdbm state=latest
+
+  - name: Install python dependencies
+    apt: pkg={{ item }} state=latest
+    sudo: yes
+    with_items: 
+      - python-pandas
+      - python-numpy
+
+  - name: Creates directory
+    file: path=/src/groupproject_bdossp state=directory
+
+  - name: Move data from India share (1 of 4)
+    template: src=/share/project2/FG491/tehauger/CensusZipGeoFile.csv dest={{ geofile_script_filepath }} owner=root group=root mode=644
+
+  - name: Move data from India share (2 of 4)
+    template: src=/share/project2/FG491/tehauger/ACS_11_5YR_S2301_with_ann.csv dest={{ acsfile_script_filepath }} owner=root group=root mode=644
+
+  - name: Move data from India share (3 of 4)
+    template: src=/share/project2/FG491/tehauger/XY.csv dest={{ xyfile_script_filepath }} owner=root group=root mode=644
+
+  - name: Move data from India share (4 of 4)
+    template: src=/share/project2/FG491/tehauger/DEC_00_SF3_DP3_with_ann.csv dest={{ decifile_script_filepath }} owner=root group=root mode=644
+
+  - name: Copy Python Script
+    template: src=ProjectScriptPandas.py dest={{ python_script_filepath }} owner=root group=root mode=644
+
+  - name: Execute script
+    command: sudo python {{ python_script_filepath }}
+
+  - name: Installs nginx web server
+    apt: pkg=nginx state=installed update_cache=true
+    notify:
+      - start nginx
+  
+  - name: Remove default index.html file
+    file: path=/var/www/html/index.nginx-debian.html recurse=no state=absent 
+
+  - name: Upload Viz index.html for host
+    copy: src=index.html dest={{ nginx_path }} owner=root group=root mode=0644
+  
+  - name: Update Data Viz Files (1 of 7)
+    template: src=d3.min.js dest={{ nginx_path }} owner=root group=root mode=644
+
+  - name: Update Data Viz Files (2 of 7)
+    template: src=main.js dest={{ nginx_path }} owner=root group=root mode=644
+
+  - name: Update Data Viz Files (3 of 7)
+    template: src=states.json dest={{ nginx_path }} owner=root group=root mode=644
+
+  - name: Update Data Viz Files (4 of 7)
+    template: src=style.css dest={{ nginx_path }} owner=root group=root mode=644
+
+  - name: Update Data Viz Files (5 of 7)
+    template: src=test.csv dest={{ nginx_path }} owner=root group=root mode=644
+
+  - name: Update Data Viz Files (6 of 7)
+    template: src=tip.js dest={{ nginx_path }} owner=root group=root mode=644
+
+  - name: Update Data Viz Files (7 of 7)
+    template: src=topojson.min.js dest={{ nginx_path }} owner=root group=root mode=644
+

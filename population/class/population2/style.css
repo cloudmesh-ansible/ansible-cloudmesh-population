@@ -1,0 +1,72 @@
+body {
+	background: #fff;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	color: #fff;
+	padding: 0px;
+	margin: 0px;
+}
+
+a {
+	text-decoration: none;
+	color: #2bbe8c;
+}
+
+#map {
+	width: 100%;
+}
+
+.d3-tip {
+	background: #fff;
+	opacity: .7;
+	color: #333;
+	padding: 20px;
+	border-radius: 3px;
+}
+
+.statename {
+	font-size: 16px;
+}
+
+.mainno {
+	font-size: 14px;
+}
+
+#legend {
+	position: absolute;
+	width: 66%;
+	height: 20px;
+}
+
+#legendinner {
+	margin: 0 auto;
+	position: relative;
+	width: 245px;
+}
+
+.legendleft {
+	width: 50px;
+	float: left;
+	margin: 0px;
+}
+
+.legendright {
+	width: 50px;
+	float: right;
+	text-align: right;
+	margin: 0px;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.x.axis path {
+  display: none;
+}
