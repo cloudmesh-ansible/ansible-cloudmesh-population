@@ -64,9 +64,9 @@ JAVA JRE AND JDK http://www.oracle.com/technetwork/java/javase/downloads/index.h
 MongoDB https://www.mongodb.org/downloads#production
 
 MongoDB Data Import:
-1) Go to the terminal and type in the command:
+1) Go to the terminal and type in the command::
 
-$ gedit ~/.bashrc
+   $ gedit ~/.bashrc
 
 2) To add your MongoDB path, add these lines to the very bottom of the file that comes up, then save the file and close.
 
