@@ -3,7 +3,11 @@ New Content
 
 Description
 --------------
-this is a program that provides a visual representation of .....
+
+This project uncovers some of the key factors behind why population numbers change. We highlight population numbers by county and use statistical data to discover trends. 
+Data sets were made publicly available by the U.S. Census Bureau and the United States Department of Labor: Bureau of Labor Statistics. The first data set is the population change for counties in the United States and Puerto Rico: 2000 to 2010. The other two data sets are unemployment rates in counties in the United States and Puerto Rico, one for 2000 and the other for 2010. We will derive meaningful insight between population changes in counties and unemployment rate, specifically how unemployment rates appear to affect population changes. We pin point specific counties of the United States that show drastic changes.
+Data sets are loaded into MongoDB.For the purposes of our data set, analysis was done utilizing a Python script which pulls data directly from MongoDB, does a short analysis, and exports the data in CSV format. Visualization is done on Tableau.
+Platforms for running this analysis are shown both on the Oracle VM Virtualbox with Ubuntu, and also on FutureSystems with Ansible automation.
 
 Original content
 ====================
