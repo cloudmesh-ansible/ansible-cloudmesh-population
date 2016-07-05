@@ -16,6 +16,7 @@ Mongodb and Hadoop are both required for this project to run. As such they are d
 	
 To do:
 ==========
+
 Shorten and automate
 --------------------
 
