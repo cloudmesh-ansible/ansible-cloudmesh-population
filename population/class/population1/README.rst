@@ -70,7 +70,7 @@ Open a new terminal and then run::
 
     $ cp laborforcedata2000.csv ~/PopulationData
 
-    $ python PythonScript.py
+    $ python analysis.py
 
 Original content
 ====================
