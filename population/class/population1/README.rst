@@ -13,6 +13,137 @@ Mongodb and Hadoop are both required for this project to run. As such they are d
 	1.
 	
 	2.
+	
+To do:
+==========
+Shorten and automate
+--------------------
+Implementation
+
+Part A - Oracle Virtualbox Ubuntu Required Manual Software Installation:
+
+    A detailed software installation script is available on the project GitHub page. Detailed software integration instructions are located there as well. Below is a list of locations on where to download the required software.
+
+Oracle VM Virtualbox https://www.virtualbox.org/wiki/Downloads Ubuntu Desktop http://www.ubuntu.com/download Hadoop 2.7.1 via Mirror http://www-eu.apache.org/dist/hadoop/common/ JAVA JRE AND JDK http://www.oracle.com/technetwork/java/javase/downloads/index.html MongoDB https://www.mongodb.org/downloads#production
+
+MongoDB Data Import: 1) Go to the terminal and type in the command:
+
+$ gedit ~/.bashrc
+
+    To add your MongoDB path, add these lines to the very bottom of the file that comes up, then save the file and close.
+
+$ export MONGODB_HOME=/home/username/mongodb/mongodb-linux-x86_64-ubuntu1404-3.2.5
+
+$ export PATH=$MONGODB_HOME/bin:$PATH
+
+    MongoDB has a default setting where it looks for a place to store files, so we need to create a path to do that. I create a data/db file in the home directory. Go to this directory and make a copy of the path where the directory is located. We run this command with the location and name of the file we created. This is what mine looked like:
+
+$ mongod --dbpath=/home/username/data/db
+
+    You should see that the port is connected: This terminal should remain open so that you stay connected to MongoDB. You simply open a separate terminal to being working.
+    We begin working by opening a 2nd terminal and typing the command "mongo"
+    Now you need to create a database where your data will be stored. To do this, simply type "use" and the name of the database that you want to create. In this example, I have created the database "PopulationData" by typing "use PopulationData"
+    Now we need to load the data into the database we just created using the ìmongoimportî command. To do this we will need to exit out of the mongo shell, as mongoimport was designed to work directly from the CMD prompt. However, leave the other CMD prompt screen open showing your connection to MongoDB. After exiting out of mongo shell, run this command with the location of the csv file you are loading at the end. You must be working from the directory where the file is located. Do this for all three of the data files being loaded, each in its own unique collection name. Final note: MongoDB is highly case sensitive, so make sure these commands are copied exactly.
+
+mongoimport --db PopulationData --collection populationchange --type csv --headerline --stopOnError --ignoreBlanks -file countypopulationchange.csv
+
+mongoimport --db PopulationData --collection laborforce2000 --type csv --headerline --stopOnError --ignoreBlanks -file laborforcedata2000.csv
+
+mongoimport --db PopulationData --collection laborforce2010 --type csv --headerline --stopOnError --ignoreBlanks -file laborforcedata2010.csv
+
+    To check to see what you're new collection and documents look like, we will log back into the MongoDB shell with the "mongo" command. Then "use PopulationData" to go back into the database that you created earlier. Here are some simple commands used to query your database and collections.show
+
+"show collections" - will show a list of all collections in the database.
+
+"db.populationchange.findOne()" - shows one random document from the population change collection that we created
+
+Using Python to Run Analysis on U.S. Census Data and Labor Force Data:
+
+    First we need to install the required packages
+
+        $ sudo apt-get install python-pip
+
+        $ sudo pip install pymongo
+
+    Make sure that a connection is open to your MongoDB
+
+$ mongod --dbpath=/home/username/data/db
+
+    In a second terminal, save the PythonScript.py file anywhere in your directory and run this command:
+
+$ python PythonScript.py
+
+You should see a message that says "Connected successfully!" You should also see a new file in your directory titled "rate2000". The program looks for all of the unemployment rates that are above 10 and returns them in a csv document. Here is a sample of what the script looks like:
+
+    The csv file can now be used for easy visualization. Congratulations, you are finished!
+
+Part B - Futuresystems Ubuntu
+
+Required Manual Software Installation:
+
+    Login to india.futuresystems.org using Putty
+
+    $ sudo apt-get install python-pip
+
+    $ module load openstack
+
+    $ virtualenv $HOME/bdossp-sp16
+
+    $ source $HOME/bdossp-sp16/bin/activate
+
+    $ pip install --trusted-host pypi.python.org ansible
+
+    $ git clone https://github.iu.edu/edenbarn/sw-project-template.git
+
+    $ cd /sw-project-template/src/playbook-codes
+
+Edit the inventory.txt file with the IP address of your VM instance.
+
+    $ ansible-playbook -i inventory.txt -c ssh hadoop-install.yml
+
+    $ ansible-playbook -i inventory.txt -c ssh mongo-install.yml
+
+    Go to home directory and become root user
+
+        $ mkdir -p /data/db
+
+        $ mongod --dbpath=/data/db
+
+    Open a new terminal and then run: $ mongo
+
+    $ use PopulationData
+
+    $ exit
+
+    $ cd sw-project-template/data
+
+    $ cp countypopulationchange.csv ~/PopulationData
+
+    $ cp laborforcedata2010.csv ~/PopulationData
+
+    $ cp laborforcedata2000.csv ~/PopulationData
+
+    $ python PythonScript.py
+
+References https://www.youtube.com/watch?v=_qLTMpdP7H4 (Easiest way to install / setup hadoop | Hadoop tutorial)
+
+https://www.youtube.com/watch?v=lrFWHIadwhQ (How to Install MongoDB in Ubuntu | Kalyan Hadoop Training in Hyderabad)
+
+http://www.thegeekstuff.com/2012/02/hadoop-standalone-installation/ (Apache Hadoop Single Node Standalone Installation Tutorial)
+
+https://masteringmean.com/lessons/627-Integration-of-MongoDB-and-Hadoop (Installation of MongoDB-Hadoop connector)
+
+https://mongodb-documentation.readthedocs.org/en/latest/ecosystem/tutorial/getting-started-with-hadoop.html
+
+https://api.mongodb.org/python/current/tutorial.html
+
+https://www.youtube.com/watch?v=Df2Odze87dE (Map Reduce Word Count Program using Java)
+
+https://github.com/futuresystems/ansible-role-hadoop_install (Hadoop installation using Ansible playbook)
+
+http://bdossp-spring2016.readthedocs.io/en/latest/lesson/devops/ansible.html & https://github.com/cglmoocs/BDOSSSpring2016/blob/master/docs/source/lesson/ansible_roles.rst (MongoDB installation using Ansible roles)
+
+https://github.com/mongodb/mongo-hadoop/wiki/Sensor-Logs-Example (Sensor logs example for MongoDB-Hadoop connector)
 
 Original content
 ====================
