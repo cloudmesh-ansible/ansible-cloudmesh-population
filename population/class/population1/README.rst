@@ -8,7 +8,7 @@ This project uncovers some of the key factors behind why population numbers chan
 
 Requirements
 ------------
-Mongodb and Hadoop are both required for this project to run. As such they are downloaded and installed via ansible galaxy roles. These roles can be found within the following repositories
+Mongodb and Hadoop are both required for this project to run. As such they are downloaded and installed via ansible galaxy roles. These roles can be found within the following repositories.
 	
 	1.
 	
