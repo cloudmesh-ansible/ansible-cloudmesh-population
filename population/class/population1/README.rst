@@ -22,7 +22,7 @@ Shorten and automate
 Implementation
 ==============
 
-Part B - Futuresystems Ubuntu
+Futuresystems Ubuntu
 -----------------------------
 
 Required Manual Software Installation
