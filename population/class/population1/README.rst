@@ -21,8 +21,9 @@ Shorten and automate
 Implementation
 
 Part A - Oracle Virtualbox Ubuntu Required Manual Software Installation:
+-----------------------------------------------------------------------------
 
-    A detailed software installation script is available on the project GitHub page. Detailed software integration instructions are located there as well. Below is a list of locations on where to download the required software.
+A detailed software installation script is available on the project GitHub page. Detailed software integration instructions are located there as well. Below is a list of locations on where to download the required software.
 
 Oracle VM Virtualbox https://www.virtualbox.org/wiki/Downloads Ubuntu Desktop http://www.ubuntu.com/download Hadoop 2.7.1 via Mirror http://www-eu.apache.org/dist/hadoop/common/ JAVA JRE AND JDK http://www.oracle.com/technetwork/java/javase/downloads/index.html MongoDB https://www.mongodb.org/downloads#production
 
@@ -42,7 +43,7 @@ MongoDB has a default setting where it looks for a place to store files, so we n
 
 You should see that the port is connected: This terminal should remain open so that you stay connected to MongoDB. You simply open a separate terminal to being working.
 We begin working by opening a 2nd terminal and typing the command "mongo"
-    Now you need to create a database where your data will be stored. To do this, simply type "use" and the name of the database that you want to create. In this example, I have created the database "PopulationData" by typing "use PopulationData"
+Now you need to create a database where your data will be stored. To do this, simply type "use" and the name of the database that you want to create. In this example, I have created the database "PopulationData" by typing "use PopulationData"
 Now we need to load the data into the database we just created using the ìmongoimportî command. To do this we will need to exit out of the mongo shell, as mongoimport was designed to work directly from the CMD prompt. However, leave the other CMD prompt screen open showing your connection to MongoDB. After exiting out of mongo shell, run this command with the location of the csv file you are loading at the end. You must be working from the directory where the file is located. Do this for all three of the data files being loaded, each in its own unique collection name. Final note: MongoDB is highly case sensitive, so make sure these commands are copied exactly::
 
     mongoimport --db PopulationData --collection populationchange --type csv --headerline --stopOnError --ignoreBlanks -file countypopulationchange.csv
@@ -61,23 +62,24 @@ Using Python to Run Analysis on U.S. Census Data and Labor Force Data:
 
 First we need to install the required packages::
 
-        $ sudo apt-get install python-pip
+    $ sudo apt-get install python-pip
 
-        $ sudo pip install pymongo
+    $ sudo pip install pymongo
 
 Make sure that a connection is open to your MongoDB::
 
     $ mongod --dbpath=/home/username/data/db
 
-    In a second terminal, save the PythonScript.py file anywhere in your directory and run this command:
+In a second terminal, save the PythonScript.py file anywhere in your directory and run this command:
 
 $ python PythonScript.py
 
 You should see a message that says "Connected successfully!" You should also see a new file in your directory titled "rate2000". The program looks for all of the unemployment rates that are above 10 and returns them in a csv document. Here is a sample of what the script looks like:
 
-    The csv file can now be used for easy visualization. Congratulations, you are finished!
+The csv file can now be used for easy visualization. Congratulations, you are finished!
 
 Part B - Futuresystems Ubuntu
+----------------------------------
 
 Required Manual Software Installation:
 
@@ -97,19 +99,21 @@ Required Manual Software Installation:
 
     $ cd /sw-project-template/src/playbook-codes
 
-Edit the inventory.txt file with the IP address of your VM instance.
+Edit the inventory.txt file with the IP address of your VM instance::
 
     $ ansible-playbook -i inventory.txt -c ssh hadoop-install.yml
 
     $ ansible-playbook -i inventory.txt -c ssh mongo-install.yml
 
-    Go to home directory and become root user
+Go to home directory and become root user::
 
-        $ mkdir -p /data/db
+    $ mkdir -p /data/db
 
-        $ mongod --dbpath=/data/db
+    $ mongod --dbpath=/data/db
 
-    Open a new terminal and then run: $ mongo
+Open a new terminal and then run::
+
+    $ mongo
 
     $ use PopulationData
 
