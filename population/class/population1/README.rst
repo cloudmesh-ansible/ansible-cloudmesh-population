@@ -14,20 +14,14 @@ Mongodb and Hadoop are both required for this project to run. As such they are d
 	
 	2.
 	
-To do:
+To Do
+=====
 
-
-
-Shorten and automate
---------------------
-
-
-Implementation
-
-
+Shorten and automate the implementation
+---------------------------------------
 
 Futuresystems Ubuntu
------------------------------
+--------------------
 
 
 Required Manual Software Installation
