@@ -81,9 +81,9 @@ The csv file can now be used for easy visualization. Congratulations, you are fi
 Part B - Futuresystems Ubuntu
 ----------------------------------
 
-Required Manual Software Installation:
+Required Manual Software Installation
 
-    Login to india.futuresystems.org using Putty
+Login to india.futuresystems.org using Putty::
 
     $ sudo apt-get install python-pip
 
