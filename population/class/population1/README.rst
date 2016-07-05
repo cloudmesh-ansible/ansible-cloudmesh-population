@@ -15,7 +15,7 @@ Mongodb and Hadoop are both required for this project to run. As such they are d
 	2.
 	
 To do:
-==========
+
 
 
 Shorten and automate
@@ -23,7 +23,7 @@ Shorten and automate
 
 
 Implementation
-==============
+
 
 
 Futuresystems Ubuntu
