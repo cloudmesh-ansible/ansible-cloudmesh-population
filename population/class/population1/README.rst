@@ -73,26 +73,6 @@ Open a new terminal and then run::
 
     $ python PythonScript.py
 
-References https://www.youtube.com/watch?v=_qLTMpdP7H4 (Easiest way to install / setup hadoop | Hadoop tutorial)
-
-https://www.youtube.com/watch?v=lrFWHIadwhQ (How to Install MongoDB in Ubuntu | Kalyan Hadoop Training in Hyderabad)
-
-http://www.thegeekstuff.com/2012/02/hadoop-standalone-installation/ (Apache Hadoop Single Node Standalone Installation Tutorial)
-
-https://masteringmean.com/lessons/627-Integration-of-MongoDB-and-Hadoop (Installation of MongoDB-Hadoop connector)
-
-https://mongodb-documentation.readthedocs.org/en/latest/ecosystem/tutorial/getting-started-with-hadoop.html
-
-https://api.mongodb.org/python/current/tutorial.html
-
-https://www.youtube.com/watch?v=Df2Odze87dE (Map Reduce Word Count Program using Java)
-
-https://github.com/futuresystems/ansible-role-hadoop_install (Hadoop installation using Ansible playbook)
-
-http://bdossp-spring2016.readthedocs.io/en/latest/lesson/devops/ansible.html & https://github.com/cglmoocs/BDOSSSpring2016/blob/master/docs/source/lesson/ansible_roles.rst (MongoDB installation using Ansible roles)
-
-https://github.com/mongodb/mongo-hadoop/wiki/Sensor-Logs-Example (Sensor logs example for MongoDB-Hadoop connector)
-
 Original content
 ====================
 Final Report
