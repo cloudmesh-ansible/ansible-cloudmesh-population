@@ -26,7 +26,7 @@ Futuresystems Ubuntu
 
 Required Manual Software Installation
 
-Login to india.futuresystems.org using Putty::
+Login to india.futuresystems.org using a machine configured with ssh::
 
     $ sudo apt-get install python-pip
 
