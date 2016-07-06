@@ -19,16 +19,19 @@ Data sets are loaded into MongoDB.For the purposes of our data set, analysis was
 Platforms for running this analysis are shown both on the Oracle VM Virtualbox with Ubuntu, and also on FutureSystems with Ansible automation.
       
 Problem Statement
+-----------------
 
-	Big Data open source software such as Hadoop and MongoDB are incredibly important for analyzing data that has large volume and variety. Therefore, it is necessary to learn how to utilize these tools. We are using the U.S. Census and U.S. Labor statistics to accurately display how to integrate this software into powerful tools to be used for Big Data analysis. 
+Big Data open source software such as Hadoop and MongoDB are incredibly important for analyzing data that has large volume and variety. Therefore, it is necessary to learn how to utilize these tools. We are using the U.S. Census and U.S. Labor statistics to accurately display how to integrate this software into powerful tools to be used for Big Data analysis. 
 
 Purpose and Objectives
+----------------------
 
-	Although our data sets are not "Big Data" in their nature, they are still sufficient in order to provide examples on how data is stored, and analyzed utilizing Big Data open source software tools. The purpose of this project is to use these data sets in order to provide a start to finish example on how to use them; from the storage stage to using Python and Hadoop for analysis, and finally to report findings in visualization format. 
+Although our data sets are not "Big Data" in their nature, they are still sufficient in order to provide examples on how data is stored, and analyzed utilizing Big Data open source software tools. The purpose of this project is to use these data sets in order to provide a start to finish example on how to use them; from the storage stage to using Python and Hadoop for analysis, and finally to report findings in visualization format. 
 
 Results
+-------
 
-	The results of this project are available on our project GitHub page located at this hyperlink: https://github.iu.edu/edenbarn/sw-project-template where you will find an explanation of where the data sets came from, data cleaning solutions, the data sets in an already cleaned file, software orchestration, implementation, and the python script used for analysis (PythonScript.py).
+The results of this project are available on our project GitHub page located at this hyperlink: https://github.iu.edu/edenbarn/sw-project-template where you will find an explanation of where the data sets came from, data cleaning solutions, the data sets in an already cleaned file, software orchestration, implementation, and the python script used for analysis (PythonScript.py).
 	Our visualizations are available on Tableau Public for 
 interactive use at this link: 
 https://public.tableau.com/profile/eden3065#!/ where we have provided 
@@ -45,17 +48,19 @@ unemployment rates that were greater than 15.
 
 
 Findings
+--------
 
-      Overall population increased in the U.S. from 2000 to 2010 as evidenced by the higher frequency of green areas compared to red in our first visualization. Most of the population expansion appears in the Western and Southern regions of the U.S. We do not see much growth in the Northeast and Midwest regions of the country over the last decade. Counties in Florida, Georgia, and the DC area seemed to experience the most growth in population from 2000 to 2010. Also, California, Colorado, and Nevada show significant growth over the decade long period.
-      It could be expected that we would see significant population declines in Louisiana given the events of natural disasters such as Hurricane Katrina that defined the decade. In fact, four of the top five greatest population decreases by county occurred in Louisiana and Mississippi. While there are many factors at play influencing population change, this event is one that likely had a major impact on the statistics.
-      The highest unemployment rates by county exist in the southern states (TX, CA, AZ) specifically along the U.S./Mexico border. It is compelling that the counties with the highest unemployment rates fall on the Mexico border where immigration issues could be a plausible factor. We also see unemployment concerns in Mississippi and Alabama, geographic areas that are historically known to be ranked less favorably in educational arenas. Oddly, the Michigan Upper Peninsula shows high percentages of unemployment rates.
+Overall population increased in the U.S. from 2000 to 2010 as evidenced by the higher frequency of green areas compared to red in our first visualization. Most of the population expansion appears in the Western and Southern regions of the U.S. We do not see much growth in the Northeast and Midwest regions of the country over the last decade. Counties in Florida, Georgia, and the DC area seemed to experience the most growth in population from 2000 to 2010. Also, California, Colorado, and Nevada show significant growth over the decade long period.
+It could be expected that we would see significant population declines in Louisiana given the events of natural disasters such as Hurricane Katrina that defined the decade. In fact, four of the top five greatest population decreases by county occurred in Louisiana and Mississippi. While there are many factors at play influencing population change, this event is one that likely had a major impact on the statistics.
+The highest unemployment rates by county exist in the southern states (TX, CA, AZ) specifically along the U.S./Mexico border. It is compelling that the counties with the highest unemployment rates fall on the Mexico border where immigration issues could be a plausible factor. We also see unemployment concerns in Mississippi and Alabama, geographic areas that are historically known to be ranked less favorably in educational arenas. Oddly, the Michigan Upper Peninsula shows high percentages of unemployment rates.
 
 Implementation
+--------------
 
 Part A - Oracle Virtualbox Ubuntu
 Required Manual Software Installation:
 
-	A detailed software installation script is available on the project GitHub page. Detailed software integration instructions are located there as well. Below is a list of locations on where to download the required software.
+A detailed software installation script is available on the project GitHub page. Detailed software integration instructions are located there as well. Below is a list of locations on where to download the required software.
 
 Oracle VM Virtualbox https://www.virtualbox.org/wiki/Downloads
 Ubuntu Desktop http://www.ubuntu.com/download
@@ -64,19 +69,20 @@ JAVA JRE AND JDK http://www.oracle.com/technetwork/java/javase/downloads/index.h
 MongoDB https://www.mongodb.org/downloads#production
 
 MongoDB Data Import:
+
 1) Go to the terminal and type in the command::
 
    $ gedit ~/.bashrc
 
-2) To add your MongoDB path, add these lines to the very bottom of the file that comes up, then save the file and close.
+2) To add your MongoDB path, add these lines to the very bottom of the file that comes up, then save the file and close::
 
-$ export MONGODB_HOME=/home/username/mongodb/mongodb-linux-x86_64-ubuntu1404-3.2.5
+   $ export MONGODB_HOME=/home/username/mongodb/mongodb-linux-x86_64-ubuntu1404-3.2.5
 
-$ export PATH=$MONGODB_HOME/bin:$PATH
+   $ export PATH=$MONGODB_HOME/bin:$PATH
 
-3) MongoDB has a default setting where it looks for a place to store files, so we need to create a path to do that. I create a data/db file in the home directory. Go to this directory and make a copy of the path where the directory is located. We run this command with the location and name of the file we created. This is what mine looked like:
+3) MongoDB has a default setting where it looks for a place to store files, so we need to create a path to do that. I create a data/db file in the home directory. Go to this directory and make a copy of the path where the directory is located. We run this command with the location and name of the file we created. This is what mine looked like::
 
-$ mongod --dbpath=/home/username/data/db
+   $ mongod --dbpath=/home/username/data/db
 
 4) You should see that the port is connected: This terminal should remain open so that you stay connected to MongoDB. You simply open a separate terminal to being working.
 
@@ -100,19 +106,19 @@ mongoimport --db PopulationData --collection laborforce2010 --type csv --headerl
 
 Using Python to Run Analysis on U.S. Census Data and Labor Force Data:
 
-1) First we need to install the required packages
+1) First we need to install the required packages::
 
       $ sudo apt-get install python-pip
       
       $ sudo pip install pymongo
       
-2) Make sure that a connection is open to your MongoDB
+2) Make sure that a connection is open to your MongoDB::
 
-$ mongod --dbpath=/home/username/data/db
+   $ mongod --dbpath=/home/username/data/db
 
-3) In a second terminal, save the PythonScript.py file anywhere in your directory and run this command:
+3) In a second terminal, save the PythonScript.py file anywhere in your directory and run this command::
 
-$ python PythonScript.py
+   $ python PythonScript.py
 
 You should see a message that says "Connected successfully!" You should also see a new file in your directory titled "rate2000". The program looks for all of the unemployment rates that are above 10 and returns them in a csv document. Here is a sample of what the script looks like:
 

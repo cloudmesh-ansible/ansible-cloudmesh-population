@@ -1,3 +1,79 @@
+New Content
+====================
+
+Description
+--------------
+
+This project attempts to uncover some of the key factors behind why population numbers change. We highlight population numbers by county and use statistical data to discover trends. Data sets were made publicly available by the U.S. Census Bureau and the United States Department of Labor: Bureau of Labor Statistics. The first data set is the population change for counties in the United States and Puerto Rico: 2000 to 2010. The other two data sets are unemployment rates in counties in the United States and Puerto Rico, one for 2000 and the other for 2010. We Plan to derive meaningful insight between population changes in counties and unemployment rate, specifically how unemployment rates appear to affect population changes. The data sets are loaded into MongoDB. The analysis is conducted by a Python script, titled analysis which pulls data directly from MongoDB, does a short analysis, and exports the data in CSV format. Visualization is done on Tableau. Platforms for running this analysis are shown both on the Oracle VM Virtualbox with Ubuntu, and also on FutureSystems with Ansible automation.
+
+Requirements
+------------
+Mongodb and Hadoop are both required for this project to run. As such they are downloaded and installed via ansible galaxy roles. These roles can be found within the following repositories.
+	
+	1. https://github.com/cloudmesh/ansible-cloudmesh-mongodb
+	
+	2. https://github.com/cloudmesh/ansible-cloudmesh-hadoop
+	
+To Do
+=====
+
+Shorten and automate the implementation
+---------------------------------------
+
+Futuresystems Ubuntu
+--------------------
+
+
+Required Manual Software Installation
+
+Login to india.futuresystems.org using Putty::
+
+    $ sudo apt-get install python-pip
+
+    $ module load openstack
+
+    $ virtualenv $HOME/bdossp-sp16
+
+    $ source $HOME/bdossp-sp16/bin/activate
+
+    $ pip install --trusted-host pypi.python.org ansible
+
+    $ git clone https://github.iu.edu/edenbarn/sw-project-template.git
+
+    $ cd /sw-project-template/src/playbook-codes
+
+Edit the inventory.txt file with the IP address of your VM instance::
+
+    $ ansible-playbook -i inventory.txt -c ssh hadoop-install.yml
+
+    $ ansible-playbook -i inventory.txt -c ssh mongo-install.yml
+
+Go to home directory and become root user::
+
+    $ mkdir -p /data/db
+
+    $ mongod --dbpath=/data/db
+
+Open a new terminal and then run::
+
+    $ mongo
+
+    $ use PopulationData
+
+    $ exit
+
+    $ cd sw-project-template/data
+
+    $ cp countypopulationchange.csv ~/PopulationData
+
+    $ cp laborforcedata2010.csv ~/PopulationData
+
+    $ cp laborforcedata2000.csv ~/PopulationData
+
+    $ python analysis.py
+
+Original content
+====================
 Final Report
 ===============================================================================
 Big Data Open Source Software: Indiana University
