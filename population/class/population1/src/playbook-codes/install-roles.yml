@@ -1,0 +1,7 @@
+# install_roles.yml
+
+# from galaxy (hdoop)
+- src: username.rolename
+
+# from galaxy (mongodb)
+- src: username.rolename
