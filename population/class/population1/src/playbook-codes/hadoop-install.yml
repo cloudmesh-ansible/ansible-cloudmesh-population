@@ -1,6 +1,0 @@
----
-- hosts: ansible-test
-  remote_user: ubuntu
-  become: yes
-  roles:
-  - cloudmesh.cloudmesh-hadoop
