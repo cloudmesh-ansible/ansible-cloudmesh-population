@@ -3,4 +3,4 @@
   remote_user: ubuntu
   become: yes
   roles:
-- cloudmesh.cloudmesh-hadoop
+  - cloudmesh.cloudmesh-hadoop
