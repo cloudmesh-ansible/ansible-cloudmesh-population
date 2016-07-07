@@ -1,7 +1,7 @@
 # install_roles.yml
 
 # from galaxy (hdoop)
-- src: username.rolename
+- src: cloudmesh.cloudmesh-hadoop
 
 # from galaxy (mongodb)
-- src: username.rolename
+- src: cloudmesh.cloudmesh-mongodb
