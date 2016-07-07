@@ -23,6 +23,9 @@ Shorten and automate the implementation
 Futuresystems Ubuntu
 --------------------
 
+note::
+
+    $ ansible-galaxy install -r install-roles.yml --roles-path=~/ansible-cloudmesh-population/population/class/population1/src/playbook-codes/
 
 Required Manual Software Installation
 
