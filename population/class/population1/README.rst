@@ -37,8 +37,6 @@ Required Manual Software Installation
 
 Login to india.futuresystems.org using a machine configured with ssh::
 
-    $ sudo apt-get install python-pip
-
     $ module load openstack
 
     $ virtualenv $HOME/bdossp-sp16
