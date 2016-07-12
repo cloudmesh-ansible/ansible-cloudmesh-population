@@ -44,18 +44,18 @@ Login to india.futuresystems.org using a machine configured with ssh::
     $ source $HOME/bdossp-sp16/bin/activate
 
     $ pip install --trusted-host pypi.python.org ansible
-
-    ignore:       $ git clone https://github.iu.edu/edenbarn/sw-project-template.git
     
     $ git clone git@github.com:cloudmesh/ansible-cloudmesh-population.git
 
-    $ cd /sw-project-template/src/playbook-codes
+    $ cd ansible-cloudmesh-population/population/class/population1/src/playbook-codes
+    
+    $ ansible-galaxy install -r install-roles.yml --roles-path=~/ansible-cloudmesh-population/population/class/population1/src/playbook-codes/
 
-Edit the inventory.txt file with the IP address of your VM instance::
+Edit the inventory.txt file with the IP address of your VM instance then run the following::
 
-    $ ansible-playbook -i inventory.txt -c ssh hadoop-install.yml
+    $ ansible-playbook -i inventory.txt -c ssh hadoop-role.yml
 
-    $ ansible-playbook -i inventory.txt -c ssh mongo-install.yml
+    $ ansible-playbook -i inventory.txt -c ssh mongo-role.yml
 
 Go to home directory and become root user::
 
