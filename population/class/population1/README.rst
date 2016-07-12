@@ -45,7 +45,9 @@ Login to india.futuresystems.org using a machine configured with ssh::
 
     $ pip install --trusted-host pypi.python.org ansible
 
-    $ git clone https://github.iu.edu/edenbarn/sw-project-template.git
+    #$ git clone https://github.iu.edu/edenbarn/sw-project-template.git
+    
+    $ git clone git@github.com:cloudmesh/ansible-cloudmesh-population.git
 
     $ cd /sw-project-template/src/playbook-codes
 
