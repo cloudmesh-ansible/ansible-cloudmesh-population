@@ -26,6 +26,12 @@ Futuresystems Ubuntu
 note::
 
     $ ansible-galaxy install -r install-roles.yml --roles-path=~/ansible-cloudmesh-population/population/class/population1/src/playbook-codes/
+    
+note::
+
+    $ eval $(ssh-agent)
+    $ ssh-add
+    $ source ~/CH-817724-openrc.sh
 
 Required Manual Software Installation
 
